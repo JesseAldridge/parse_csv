@@ -12,9 +12,9 @@ def parse_csv(filename):
   if rows:
     keys = rows[0]
     keys = [key.strip().lower().replace(' ', '_') for key in keys]
-    d = {}
-    dicts.append(d)
     for row in rows[1:]:
+      d = {}
+      dicts.append(d)
       for key, val in zip(keys, row):
         d[key] = val.decode('utf8')
   return dicts
@@ -24,4 +24,6 @@ def utf_8_encoder(f):
       yield line.encode('utf-8')
 
 if __name__ == '__main__':
-  print json.dumps(parse_csv(sys.argv[1]), indent=2)
+  path = '/Users/Jesse/Desktop/Daily Log - Sheet1.csv'
+  print json.dumps(parse_csv(path), indent=2)
+  # print json.dumps(parse_csv(sys.argv[1]), indent=2)
